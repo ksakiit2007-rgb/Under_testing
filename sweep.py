@@ -14,40 +14,20 @@ import config as C
 
 # Each variant = settings that differ from config.py
 VARIANTS = {
-    "A old settings": {
-        "TARGET_ANNUAL_VOL": 0.50,
-        "MIN_EFFICIENCY": 0.0,
-        "TRAIL_STOP_DAILY_SIGMAS": 2.0,
-        "TRAIL_STOP_MIN": 0.025,
-    },
-
-    "B more risk": {
-        "TARGET_ANNUAL_VOL": 0.70,
-        "MIN_EFFICIENCY": 0.0,
-        "TRAIL_STOP_DAILY_SIGMAS": 2.0,
-        "TRAIL_STOP_MIN": 0.025,
-    },
-
-    "C chop filter": {
-        "TARGET_ANNUAL_VOL": 0.50,
-        "MIN_EFFICIENCY": 0.15,
-        "TRAIL_STOP_DAILY_SIGMAS": 2.0,
-        "TRAIL_STOP_MIN": 0.025,
-    },
-
-    "D more risk + chop": {
-        "TARGET_ANNUAL_VOL": 0.70,
-        "MIN_EFFICIENCY": 0.15,
-        "TRAIL_STOP_DAILY_SIGMAS": 2.0,
-        "TRAIL_STOP_MIN": 0.025,
-    },
-
-    "E D + wider stops": {
-        "TARGET_ANNUAL_VOL": 0.70,
-        "MIN_EFFICIENCY": 0.15,
-        "TRAIL_STOP_DAILY_SIGMAS": 3.0,
-        "TRAIL_STOP_MIN": 0.04,
-    },
+    "A current": {},
+    "B wider band": {"REBALANCE_BAND": 0.05, "MIN_TRADE_USD": 500},
+    "C stricter entry": {"ENTRY_SCORE": 0.40, "EXIT_SCORE": -0.10},
+    "D slower trends": {"EMA_PAIRS": [(16, 64), (32, 128), (64, 256)], "MOMENTUM_BARS": 192},
+    "E band+entry": {"REBALANCE_BAND": 0.05, "MIN_TRADE_USD": 500, "ENTRY_SCORE": 0.40, "EXIT_SCORE": -0.10},
+    "F band+entry+slow": {"REBALANCE_BAND": 0.05, "MIN_TRADE_USD": 500, "ENTRY_SCORE": 0.40,
+                          "EXIT_SCORE": -0.10, "EMA_PAIRS": [(16, 64), (32, 128), (64, 256)],
+                          "MOMENTUM_BARS": 192},
+    "G F+more risk": {"REBALANCE_BAND": 0.05, "MIN_TRADE_USD": 500, "ENTRY_SCORE": 0.40,
+                      "EXIT_SCORE": -0.10, "EMA_PAIRS": [(16, 64), (32, 128), (64, 256)],
+                      "MOMENTUM_BARS": 192, "TARGET_ANNUAL_VOL": 0.70},
+    "H F+wider stops": {"REBALANCE_BAND": 0.05, "MIN_TRADE_USD": 500, "ENTRY_SCORE": 0.40,
+                        "EXIT_SCORE": -0.10, "EMA_PAIRS": [(16, 64), (32, 128), (64, 256)],
+                        "MOMENTUM_BARS": 192, "TRAIL_STOP_DAILY_SIGMAS": 3.0},
 }
 PERIODS = [14, 30, 60]
 
